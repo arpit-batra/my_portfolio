@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class SkillWidget extends StatelessWidget {
   final String assetName;
   final String skillName;
+  final double imageScale;
   const SkillWidget(
-      {required this.assetName, required this.skillName, Key? key})
+      {required this.assetName,
+      required this.skillName,
+      required this.imageScale,
+      Key? key})
       : super(key: key);
 
   @override
@@ -12,18 +16,24 @@ class SkillWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 300,
-          width: 300,
+          height: 150,
+          width: 150,
           decoration: BoxDecoration(
               shape: BoxShape.circle, color: Theme.of(context).primaryColor),
           child: Image.asset(
             assetName,
-            scale: 2,
+            scale: imageScale,
           ),
         ),
-        Text(
-          skillName,
-          style: TextStyle(color: Theme.of(context).primaryColor),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            skillName,
+            style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 24,
+                fontWeight: FontWeight.w700),
+          ),
         )
       ],
     );
