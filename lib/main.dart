@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: const MaterialColor(0xFF1E0075, themeColor),
           accentColor: Color.fromRGBO(129, 88, 248, 1),
-          colorScheme: ColorScheme.light()),
+          colorScheme:
+              ColorScheme.light(secondary: Color.fromRGBO(129, 88, 248, 1))),
       home: const MainPage(),
     );
   }

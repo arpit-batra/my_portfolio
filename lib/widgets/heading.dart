@@ -19,7 +19,7 @@ class Heading extends StatelessWidget {
           firstHalf,
           style: TextStyle(
               // color: Colors.white,
-              fontSize: 32,
+              fontSize: 40,
               decoration: TextDecoration.underline,
               shadows: [
                 Shadow(
@@ -34,7 +34,7 @@ class Heading extends StatelessWidget {
           secondHalf,
           style: TextStyle(
               // color: Colors.white,
-              fontSize: 32,
+              fontSize: 40,
               shadows: [
                 Shadow(
                     color: dark ? Colors.black : Colors.white,

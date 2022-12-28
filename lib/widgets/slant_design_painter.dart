@@ -13,10 +13,17 @@ class SlantDesignPainter extends CustomPainter {
     paint.style = PaintingStyle.fill;
 
     var path = Path();
-    path.lineTo(size.width, -0.1 * size.width);
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-    path.lineTo(0, 0);
+    if (section == "aboutMe") {
+      path.lineTo(size.width, -0.1 * size.width);
+      path.lineTo(size.width, size.height);
+      path.lineTo(0, size.height);
+      path.lineTo(0, 0);
+    } else if (section == "projects") {
+      path.lineTo(size.width, 0);
+      path.lineTo(size.width, size.height);
+      path.lineTo(0, size.height + (0.1 * size.width));
+      path.lineTo(0, 0);
+    }
 
     canvas.drawPath(path, paint);
   }

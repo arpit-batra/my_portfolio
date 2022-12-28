@@ -50,7 +50,7 @@ class AboutMeSection extends StatelessWidget {
                     ),
                   ),
                   Image.asset(
-                    'portfolioPic.png',
+                    './assets/portfolioPic.png',
                     scale: 3.8,
                   ),
                   if (screenWidth > 780)

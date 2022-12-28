@@ -5,13 +5,41 @@ import 'package:my_portfolio/widgets/skill.dart';
 class SkillsSection extends StatelessWidget {
   const SkillsSection({Key? key}) : super(key: key);
   static const skillsList = [
-    {"fileName": "flutter.png", "skillName": "Flutter", "imageScale": 4},
-    {"fileName": "dart.png", "skillName": "Dart", "imageScale": 12},
-    {"fileName": "firebase.png", "skillName": "Firebase", "imageScale": 3},
-    {"fileName": "git.png", "skillName": "Git", "imageScale": 4},
-    {"fileName": "cpp.png", "skillName": "C++", "imageScale": 10},
-    {"fileName": "python.png", "skillName": "Python", "imageScale": 3.3},
-    {"fileName": "jenkins.png", "skillName": "Jenkins", "imageScale": 9},
+    {
+      "fileName": "./assets/skills/flutter.png",
+      "skillName": "Flutter",
+      "imageScale": 4
+    },
+    {
+      "fileName": "./assets/skills/dart.png",
+      "skillName": "Dart",
+      "imageScale": 12
+    },
+    {
+      "fileName": "./assets/skills/firebase.png",
+      "skillName": "Firebase",
+      "imageScale": 3
+    },
+    {
+      "fileName": "./assets/skills/git.png",
+      "skillName": "Git",
+      "imageScale": 4
+    },
+    {
+      "fileName": "./assets/skills/cpp.png",
+      "skillName": "C++",
+      "imageScale": 10
+    },
+    {
+      "fileName": "./assets/skills/python.png",
+      "skillName": "Python",
+      "imageScale": 3.3
+    },
+    {
+      "fileName": "./assets/skills/jenkins.png",
+      "skillName": "Jenkins",
+      "imageScale": 9
+    },
   ];
 
   @override
