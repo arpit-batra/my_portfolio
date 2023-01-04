@@ -1,14 +1,14 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:my_portfolio/widgets/projects/project_description.dart';
+import 'package:my_portfolio/widgets/projects/project_image.dart';
+import 'package:my_portfolio/widgets/projects/project_title.dart';
 
 class Project extends StatelessWidget {
   final String imageLocation;
   final String projectName;
   final String gitHubLink;
   final String playStoreLink;
-  final String description;
+  final List<String> description;
   final int id;
   const Project(
       {required this.imageLocation,
@@ -23,114 +23,64 @@ class Project extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isIdEven = id % 2 == 0;
+    final assumedWidth = MediaQuery.of(context).size.width < 800
+        ? MediaQuery.of(context).size.width - 32.0 // -32 for margin
+        : 768.0; //88-32(margin)
+    final isMobile = assumedWidth < 400 ? true : false;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 500,
-          height: 460,
-          constraints: const BoxConstraints(
-              minWidth: 100, maxWidth: 500, maxHeight: 600, minHeight: 400),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned(
-                  top: 0,
-                  left: isIdEven ? 0 : null,
-                  right: isIdEven ? null : 0,
-                  child: Container(
-                      // color: Colors.blue[800],
-                      width: 200,
-                      height: 440,
-                      constraints: const BoxConstraints(
-                          minWidth: 100,
-                          maxWidth: 300,
-                          maxHeight: 600,
-                          minHeight: 400),
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(34)),
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(-2, 4),
-                              blurRadius: 20,
-                              spreadRadius: 0)
-                        ],
-                        // color: Colors.blue[800]
-                        // image: DecorationImage(
-                        //     image: AssetImage(imageLocation))
-                      ),
-                      child: FittedBox(
-                        fit: BoxFit.fill,
-                        child: Image.asset(
-                          imageLocation,
-                        ),
-                      ))),
-              Positioned(
-                bottom: 0,
-                right: isIdEven ? 0 : 100,
-                left: isIdEven ? 100 : 0,
-                child: Container(
-                  // color: Colors.blue[800],
-                  width: 500,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: Theme.of(context).colorScheme.secondary,
-                      boxShadow: const [
-                        BoxShadow(offset: Offset(-2, 4), blurRadius: 10)
-                      ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      " - An Android Application coded in Flutter/Dart that helps in scheduling slots for badminton courts.\n - It uses Provider package for state management and has two different flavors for two different environments (dev and prod)\n - Firebase Authentication is used to manage users and Firestore Database for storing slots.\n - Cloud Functions are used to create API endpoint that authenticates payments with Razorpay and check for any probable conflict before booking the slot in a single transaction.",
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(color: Colors.white),
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          width: assumedWidth,
+          height: !isMobile ? 0.92 * assumedWidth : null,
+          child: isMobile
+              ? Column(
+                  children: [
+                    ProjectTitle(
+                      isIdEven: isIdEven,
+                      assumedWidth: assumedWidth,
+                      projectName: projectName,
+                      gitHubLink: gitHubLink,
+                      playStoreLink: playStoreLink,
+                      isMobile: true,
                     ),
-                  ),
+                    ProjectImage(
+                      isIdEven: isIdEven,
+                      assumedWidth: assumedWidth,
+                      imageLocation: imageLocation,
+                      isMobile: true,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ProjectDescription(
+                      isIdEven: isIdEven,
+                      assumedWidth: assumedWidth,
+                      description: description,
+                      isMobile: true,
+                    ),
+                  ],
+                )
+              : Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    ProjectImage(
+                        isIdEven: isIdEven,
+                        assumedWidth: assumedWidth,
+                        imageLocation: imageLocation),
+                    ProjectDescription(
+                        isIdEven: isIdEven,
+                        assumedWidth: assumedWidth,
+                        description: description),
+                    ProjectTitle(
+                        isIdEven: isIdEven,
+                        assumedWidth: assumedWidth,
+                        projectName: projectName,
+                        gitHubLink: gitHubLink,
+                        playStoreLink: playStoreLink),
+                  ],
                 ),
-              ),
-              Positioned(
-                  top: 0,
-                  left: isIdEven ? 200 : null,
-                  right: isIdEven ? null : 200,
-                  child: SizedBox(
-                    width: 300,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        // crossAxisAlignment: isIdEven
-                        //     ? CrossAxisAlignment.start
-                        //     : CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            projectName,
-                            textAlign:
-                                isIdEven ? TextAlign.start : TextAlign.end,
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 24),
-                          ),
-                          Row(
-                            mainAxisAlignment: isIdEven
-                                ? MainAxisAlignment.start
-                                : MainAxisAlignment.end,
-                            children: [
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: SvgPicture.asset(
-                                      '/projects/Icons/github.svg')),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: SvgPicture.asset(
-                                      '/projects/Icons/googlePlay.svg')),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ))
-            ],
-          ),
         ),
       ],
     );
