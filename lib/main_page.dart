@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/sections/contact_section.dart';
 import 'package:my_portfolio/sections/intro.dart';
 import 'package:my_portfolio/sections/about_me_section.dart';
 import 'package:my_portfolio/sections/projects_section.dart';
@@ -22,6 +23,7 @@ class MainPage extends StatelessWidget {
               SkillsSection(),
               SlantBox(),
               ProjectsSection(),
+              ContactSection(),
               Container(
                 height: 10000,
               )

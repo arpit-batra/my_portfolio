@@ -45,6 +45,9 @@ class ProjectsSection extends StatelessWidget {
             "Added Banner and Interstitial Ads using Google AdMob APIs.",
           ],
           id: 1,
+        ),
+        SizedBox(
+          height: 80,
         )
       ],
     );

@@ -31,7 +31,11 @@ class ProjectTitle extends StatelessWidget {
         children: [
           Text(
             projectName,
-            textAlign: isIdEven ? TextAlign.start : TextAlign.end,
+            textAlign: isMobile
+                ? TextAlign.start
+                : isIdEven
+                    ? TextAlign.start
+                    : TextAlign.end,
             style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.w900,
