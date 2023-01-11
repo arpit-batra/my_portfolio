@@ -26,7 +26,7 @@ class ProjectDescription extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: description
               .map((e) => Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
+                    padding: const EdgeInsets.only(bottom: 8),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -34,14 +34,14 @@ class ProjectDescription extends StatelessWidget {
                           "• ",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: isMobile ? 18 : assumedWidth * 0.03),
+                              fontSize: isMobile ? 18 : assumedWidth * 0.02),
                         ),
                         Expanded(
                           child: Text(
                             e,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: isMobile ? 18 : assumedWidth * 0.03),
+                                fontSize: isMobile ? 18 : assumedWidth * 0.02),
                           ),
                         ),
                       ],
@@ -58,8 +58,8 @@ class ProjectDescription extends StatelessWidget {
     if (isMobile) return generalDescription(context);
     return Positioned(
       bottom: 0,
-      right: isIdEven ? 0 : 0.2 * assumedWidth,
-      left: isIdEven ? 0.2 * assumedWidth : 0,
+      right: isIdEven ? 0 : 0.1 * assumedWidth,
+      left: isIdEven ? 0.1 * assumedWidth : 0,
       child: generalDescription(context),
     );
   }

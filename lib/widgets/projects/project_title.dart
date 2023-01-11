@@ -66,11 +66,11 @@ class ProjectTitle extends StatelessWidget {
     if (isMobile) return generalTitle(context);
     return Positioned(
       top: 0,
-      left: isIdEven ? 0.4 * assumedWidth : null,
-      right: isIdEven ? null : 0.4 * assumedWidth,
+      left: isIdEven ? 0.2 * assumedWidth : null,
+      right: isIdEven ? null : 0.2 * assumedWidth,
       child: SizedBox(
         // color: Colors.amber,
-        width: 0.6 * assumedWidth,
+        width: 0.8 * assumedWidth,
         child: generalTitle(context),
       ),
     );

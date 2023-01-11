@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({Key? key}) : super(key: key);
+  final ScrollController controller;
+  final GlobalKey aboutSectionKey;
+  final GlobalKey skillsSectionKey;
+  final GlobalKey projectsSectionKey;
+  final GlobalKey contactSectionKey;
+  const NavBar(
+    this.controller, {
+    Key? key,
+    required this.aboutSectionKey,
+    required this.skillsSectionKey,
+    required this.projectsSectionKey,
+    required this.contactSectionKey,
+  }) : super(key: key);
 
-  Widget _sectionButton(BuildContext context, String text) {
+  Widget _sectionButton(BuildContext context, String text, GlobalKey key) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Scrollable.ensureVisible(key.currentContext!,
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.easeOutQuad);
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
@@ -28,7 +44,6 @@ class NavBar extends StatelessWidget {
   }
 
   static Widget _resumeButton(BuildContext context) {
-    // return IconButton(onPressed: () {}, icon: Icon(Icons.download),);
     return TextButton(
       onPressed: () {},
       child: Row(
@@ -52,8 +67,9 @@ class NavBar extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color.fromARGB(246, 255, 255, 255),
         borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Theme.of(context).primaryColor, width: 1.2),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,17 +93,15 @@ class NavBar extends StatelessWidget {
           ),
           Row(
             children: [
-              _sectionButton(context, 'About'),
+              _sectionButton(context, 'About', aboutSectionKey),
               _divider(context),
-              _sectionButton(context, 'Skills'),
+              _sectionButton(context, 'Skills', skillsSectionKey),
               _divider(context),
-              _sectionButton(context, 'Projects'),
+              _sectionButton(context, 'Projects', projectsSectionKey),
               _divider(context),
-              _sectionButton(context, 'Contact'),
+              _sectionButton(context, 'Contact', contactSectionKey),
               _divider(context),
               _resumeButton(context)
-              // _sectionButton(context, 'about'),
-              // _divider(context),
             ],
           )
         ],

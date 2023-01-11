@@ -45,7 +45,9 @@ class SkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width > 1400
+          ? 1400
+          : MediaQuery.of(context).size.width,
       child: Column(
         children: [
           const Padding(

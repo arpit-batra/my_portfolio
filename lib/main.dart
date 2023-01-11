@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           accentColor: Color.fromRGBO(129, 88, 248, 1),
           colorScheme:
               ColorScheme.light(secondary: Color.fromRGBO(129, 88, 248, 1))),
-      home: const MainPage(),
+      home: MainPage(),
     );
   }
 }

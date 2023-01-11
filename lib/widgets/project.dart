@@ -24,16 +24,18 @@ class Project extends StatelessWidget {
   Widget build(BuildContext context) {
     final isIdEven = id % 2 == 0;
     final assumedWidth = MediaQuery.of(context).size.width < 800
-        ? MediaQuery.of(context).size.width - 32.0 // -32 for margin
-        : 768.0; //88-32(margin)
-    final isMobile = assumedWidth < 400 ? true : false;
+        ? MediaQuery.of(context).size.width - 34.0 // -32 for margin
+        : 767.0; //800-32(margin)
+    final isMobile = assumedWidth < 600 ? true : false;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
+          // padding: const EdgeInsets.all(16),
           width: assumedWidth,
-          height: !isMobile ? 0.92 * assumedWidth : null,
+          height: !isMobile ? 0.46 * assumedWidth : null,
+          // color: Colors.amber,
           child: isMobile
               ? Column(
                   children: [

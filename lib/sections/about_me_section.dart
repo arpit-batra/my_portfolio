@@ -8,9 +8,9 @@ class AboutMeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth > 1400) screenWidth = 1400;
     return Stack(
       alignment: AlignmentDirectional.topCenter,
-      // fit: StackFit.expand,
       children: [
         Container(
           color: Colors.white,

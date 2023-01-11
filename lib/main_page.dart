@@ -8,33 +8,53 @@ import 'package:my_portfolio/sections/slant_box.dart';
 import 'package:my_portfolio/widgets/navbar.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  MainPage({Key? key}) : super(key: key);
+  final aboutSectionKey = GlobalKey();
+  final skillsSectionKey = GlobalKey();
+  final projectsSectionKey = GlobalKey();
+  final contactSectionKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
+    final controller = ScrollController();
     return Scaffold(
       body: Container(
         color: const Color.fromRGBO(233, 235, 255, 1),
         //Main Column for the whole page
-        child: SingleChildScrollView(
-          child: Stack(
-            children: [
-              NavBar(),
-              Column(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              controller: controller,
+              child: Column(
                 children: [
                   Intro(),
-                  AboutMeSection(),
-                  SkillsSection(),
+                  AboutMeSection(
+                    key: aboutSectionKey,
+                  ),
+                  SkillsSection(
+                    key: skillsSectionKey,
+                  ),
                   SlantBox(),
-                  ProjectsSection(),
-                  ContactSection(),
+                  ProjectsSection(
+                    key: projectsSectionKey,
+                  ),
+                  ContactSection(
+                    key: contactSectionKey,
+                  ),
                   Container(
                     height: 10000,
                   )
                 ],
               ),
-            ],
-          ),
+            ),
+            NavBar(
+              controller,
+              aboutSectionKey: aboutSectionKey,
+              skillsSectionKey: skillsSectionKey,
+              projectsSectionKey: projectsSectionKey,
+              contactSectionKey: contactSectionKey,
+            )
+          ],
         ),
       ),
     );
