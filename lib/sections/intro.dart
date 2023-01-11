@@ -17,7 +17,7 @@ class Intro extends StatelessWidget {
     return Center(
       child: Container(
         height: deviceHeight,
-        padding: EdgeInsets.all(32),
+        padding: const EdgeInsets.all(32),
         width: deviceWidth > prefferedWidth ? prefferedWidth : deviceWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
