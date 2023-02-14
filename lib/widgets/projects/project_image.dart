@@ -16,8 +16,8 @@ class ProjectImage extends StatelessWidget {
 
   Widget generalImage() {
     return Container(
-      width: 0.2 * assumedWidth,
-      height: 0.44 * assumedWidth,
+      width: isMobile ? 200 : 0.2 * assumedWidth,
+      height: isMobile ? 440 : 0.44 * assumedWidth,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(34)),
         boxShadow: [

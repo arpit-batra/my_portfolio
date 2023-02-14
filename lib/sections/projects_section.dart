@@ -20,8 +20,9 @@ class ProjectsSection extends StatelessWidget {
         Project(
           imageLocation: "./assets/projects/reenoScreen.png",
           projectName: "REENO : Badminton Court Booking",
-          gitHubLink: "",
-          playStoreLink: "",
+          gitHubLink: "https://github.com/arpit-batra/Reeno",
+          playStoreLink:
+              "https://play.google.com/store/apps/details?id=com.arpitbatra98.reeno",
           description: [
             "An Android Application coded in Flutter/Dart that helps in scheduling slots for badminton courts.",
             "It uses Provider package for state management and has two different flavors for two different environments (dev and prod).",

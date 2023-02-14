@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectTitle extends StatelessWidget {
   final bool isIdEven;
@@ -49,10 +50,14 @@ class ProjectTitle extends StatelessWidget {
                     : MainAxisAlignment.end,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await launchUrl(Uri.parse(gitHubLink));
+                  },
                   icon: SvgPicture.asset('/projects/Icons/github.svg')),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await launchUrl(Uri.parse(playStoreLink));
+                  },
                   icon: SvgPicture.asset('/projects/Icons/googlePlay.svg')),
             ],
           )
