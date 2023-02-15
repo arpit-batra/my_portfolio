@@ -5,6 +5,7 @@ import 'package:my_portfolio/sections/about_me_section.dart';
 import 'package:my_portfolio/sections/projects_section.dart';
 import 'package:my_portfolio/sections/skills_section.dart';
 import 'package:my_portfolio/sections/slant_box.dart';
+import 'package:my_portfolio/sections/social_media_section.dart';
 import 'package:my_portfolio/widgets/navbar/navbar.dart';
 
 class MainPage extends StatelessWidget {
@@ -43,6 +44,7 @@ class MainPage extends StatelessWidget {
                     ContactSection(
                       key: contactSectionKey,
                     ),
+                    SocialMediaSection()
                   ],
                 ),
               ),
