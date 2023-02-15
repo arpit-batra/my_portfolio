@@ -35,7 +35,7 @@ class ProjectsSection extends StatelessWidget {
           height: 80,
         ),
         Project(
-          imageLocation: "./projects/dotJoinSS.png",
+          imageLocation: "./assets/projects/dotJoinSS.png",
           projectName: "DotJoin – Dots and Boxes",
           gitHubLink: "https://github.com/akuldr67/DotJoin",
           playStoreLink:

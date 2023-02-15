@@ -53,12 +53,18 @@ class ProjectTitle extends StatelessWidget {
                   onPressed: () async {
                     await launchUrl(Uri.parse(gitHubLink));
                   },
-                  icon: SvgPicture.asset('/projects/Icons/github.svg')),
+                  icon: SvgPicture.asset(
+                    './assets/projects/Icons/github.svg',
+                    color: Theme.of(context).primaryColor,
+                  )),
               IconButton(
                   onPressed: () async {
                     await launchUrl(Uri.parse(playStoreLink));
                   },
-                  icon: SvgPicture.asset('/projects/Icons/googlePlay.svg')),
+                  icon: SvgPicture.asset(
+                    './assets/projects/Icons/googlePlay.svg',
+                    color: Theme.of(context).primaryColor,
+                  )),
             ],
           )
         ],
