@@ -91,7 +91,6 @@ class _MobileNavbarState extends State<MobileNavbar>
   }
 
   void collapseNavBar() {
-    print("Collapse Started");
     _buttonAnimationController.reverse();
     setState(() {
       _isExpanded = false;

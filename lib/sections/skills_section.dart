@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/providers/section_heights_provider.dart';
+import 'package:my_portfolio/widgets/animation/animated_heading.dart';
 import 'package:my_portfolio/widgets/heading.dart';
 import 'package:my_portfolio/widgets/skill.dart';
+import 'package:provider/provider.dart';
 
-class SkillsSection extends StatelessWidget {
+class SkillsSection extends StatefulWidget {
   const SkillsSection({Key? key}) : super(key: key);
   static const skillsList = [
     {
@@ -43,26 +46,57 @@ class SkillsSection extends StatelessWidget {
   ];
 
   @override
+  State<SkillsSection> createState() => _SkillsSectionState();
+}
+
+class _SkillsSectionState extends State<SkillsSection> {
+  final _sectionKey = GlobalKey();
+
+  @override
+  void didChangeDependencies() {
+    //For Calculating height of the Section
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<SectionHeightsProvider>(context, listen: false)
+          .setSkillsSectionHeight(_sectionKey.currentContext!.size!.height);
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
+      key: _sectionKey,
       width: MediaQuery.of(context).size.width > 1400
           ? 1400
           : MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(32.0),
-            child: Heading(
-              text: "Skills",
-              dark: true,
+          Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(),
+                ),
+                const AnimatedHeading(
+                  text: "Skills",
+                  dark: true,
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+              ],
             ),
           ),
           GridView.builder(
             itemBuilder: ((context, index) => SkillWidget(
-                  assetName: skillsList[index]["fileName"]!.toString(),
-                  skillName: skillsList[index]["skillName"]!.toString(),
-                  imageScale:
-                      double.parse(skillsList[index]["imageScale"]!.toString()),
+                  assetName:
+                      SkillsSection.skillsList[index]["fileName"]!.toString(),
+                  skillName:
+                      SkillsSection.skillsList[index]["skillName"]!.toString(),
+                  imageScale: double.parse(SkillsSection.skillsList[index]
+                          ["imageScale"]!
+                      .toString()),
                 )),
             itemCount: 7,
             shrinkWrap: true,

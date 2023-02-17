@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/providers/section_heights_provider.dart';
+import 'package:my_portfolio/widgets/animation/animated_heading.dart';
 import 'package:my_portfolio/widgets/slant_design_painter.dart';
 import 'package:my_portfolio/widgets/heading.dart';
+import 'package:provider/provider.dart';
 
-class AboutMeSection extends StatelessWidget {
+class AboutMeSection extends StatefulWidget {
   const AboutMeSection({Key? key}) : super(key: key);
+
+  @override
+  State<AboutMeSection> createState() => _AboutMeSectionState();
+}
+
+class _AboutMeSectionState extends State<AboutMeSection> {
+  final _sectionKey = GlobalKey();
+
+  @override
+  void didChangeDependencies() {
+    //For Calculating height of the Section
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<SectionHeightsProvider>(context, listen: false)
+          .setAboutMeSectionHeight(_sectionKey.currentContext!.size!.height);
+    });
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     if (screenWidth > 1400) screenWidth = 1400;
     return Stack(
+      key: _sectionKey,
       alignment: AlignmentDirectional.topCenter,
       children: [
         Container(
@@ -23,7 +44,7 @@ class AboutMeSection extends StatelessWidget {
         ),
         const Positioned(
             top: 10,
-            child: Heading(
+            child: AnimatedHeading(
               text: "About Me",
               dark: false,
             )),
@@ -43,7 +64,7 @@ class AboutMeSection extends StatelessWidget {
                       padding: screenWidth > 780
                           ? const EdgeInsets.all(48.0)
                           : const EdgeInsets.fromLTRB(48, 60, 48, 4),
-                      child: Text(
+                      child: const Text(
                         "I am a software Engineer with 2 years of working experience. Currently in love with Flutter and exploring new ways in which Mobile Development enables me to make real world impact, specially in the society around me. I love to design UI/UX before heading to code.",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),

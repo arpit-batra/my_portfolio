@@ -1,6 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/providers/section_heights_provider.dart';
+import 'package:provider/provider.dart';
 
 class Intro extends StatefulWidget {
   const Intro({Key? key}) : super(key: key);
@@ -13,6 +13,18 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation _translationAnimation;
   late Animation<double> _fadeAnimation;
+  final _sectionKey = GlobalKey();
+
+  @override
+  void didChangeDependencies() {
+    //For Calculating height of the Section
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<SectionHeightsProvider>(context, listen: false)
+          .setIntroSectionHeight(_sectionKey.currentContext!.size!.height);
+      // print(_sectionKey.currentContext!.size);
+    });
+    super.didChangeDependencies();
+  }
 
   @override
   void initState() {
@@ -45,6 +57,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
     double deviceWidth = MediaQuery.of(context).size.width;
     double prefferedWidth = 650;
     return Center(
+      key: _sectionKey,
       child: Container(
         height: deviceHeight,
         padding: const EdgeInsets.all(32),

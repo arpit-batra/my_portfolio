@@ -1,23 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/providers/section_heights_provider.dart';
+import 'package:my_portfolio/widgets/animation/animated_heading.dart';
 import 'package:my_portfolio/widgets/heading.dart';
 import 'package:my_portfolio/widgets/project.dart';
+import 'package:provider/provider.dart';
 
-class ProjectsSection extends StatelessWidget {
+class ProjectsSection extends StatefulWidget {
   const ProjectsSection({Key? key}) : super(key: key);
+
+  @override
+  State<ProjectsSection> createState() => _ProjectsSectionState();
+}
+
+class _ProjectsSectionState extends State<ProjectsSection> {
+  final _sectionKey = GlobalKey();
+
+  @override
+  void didChangeDependencies() {
+    //For Calculating height of the Section
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<SectionHeightsProvider>(context, listen: false)
+          .setProjectsSectionHeight(_sectionKey.currentContext!.size!.height);
+    });
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: _sectionKey,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        SizedBox(
+      children: [
+        const SizedBox(
           height: 100,
         ),
         Padding(
           padding: EdgeInsets.all(32.0),
-          child: Heading(text: "Projects", dark: true),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(),
+              ),
+              const AnimatedHeading(text: "Projects", dark: true),
+              Expanded(
+                child: Container(),
+              ),
+            ],
+          ),
         ),
-        Project(
+        const Project(
           imageLocation: "./assets/projects/reenoScreen.png",
           projectName: "REENO : Badminton Court Booking",
           gitHubLink: "https://github.com/arpit-batra/Reeno",
@@ -31,10 +62,10 @@ class ProjectsSection extends StatelessWidget {
           ],
           id: 0,
         ),
-        SizedBox(
+        const SizedBox(
           height: 80,
         ),
-        Project(
+        const Project(
           imageLocation: "./assets/projects/dotJoinSS.png",
           projectName: "DotJoin – Dots and Boxes",
           gitHubLink: "https://github.com/akuldr67/DotJoin",
@@ -47,7 +78,7 @@ class ProjectsSection extends StatelessWidget {
           ],
           id: 1,
         ),
-        SizedBox(
+        const SizedBox(
           height: 80,
         )
       ],

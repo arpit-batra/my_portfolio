@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/providers/section_heights_provider.dart';
+import 'package:my_portfolio/widgets/animation/animated_button.dart';
 import 'package:my_portfolio/widgets/navbar/desktop_navbar.dart';
 import 'package:my_portfolio/widgets/navbar/mobile_navbar.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -57,8 +60,6 @@ class NavBar extends StatelessWidget {
             .ref()
             .child("Personal/RecentResume.pdf")
             .getDownloadURL();
-        print(url);
-        // print("HEEYYY");
         await launchUrl(Uri.parse(url));
       },
       child: Container(
@@ -91,16 +92,47 @@ class NavBar extends StatelessWidget {
     GlobalKey key,
     Function f,
   ) {
-    return TextButton(
+    return AnimatedButton(
       onPressed: () {
-        Scrollable.ensureVisible(key.currentContext!,
-                duration: const Duration(milliseconds: 600),
-                curve: Curves.easeOutQuad,
-                alignmentPolicy: ScrollPositionAlignmentPolicy.explicit)
-            .then((value) => controller.animateTo(controller.offset - 100,
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeIn))
+        double scrollOffset = 0;
+        switch (text) {
+          case "About Me":
+            scrollOffset =
+                Provider.of<SectionHeightsProvider>(context, listen: false)
+                    .aboutMeSectionPosition;
+            break;
+          case "Skills":
+            scrollOffset =
+                Provider.of<SectionHeightsProvider>(context, listen: false)
+                    .skillsSectionPosition;
+            break;
+          case "Projects":
+            scrollOffset =
+                Provider.of<SectionHeightsProvider>(context, listen: false)
+                    .projectsSectionPostion;
+            break;
+          case "Contact":
+            scrollOffset =
+                Provider.of<SectionHeightsProvider>(context, listen: false)
+                    .contaceMeSectionPosition;
+            break;
+          default:
+            break;
+        }
+        controller
+            .animateTo(scrollOffset - 100,
+                duration: const Duration(milliseconds: 800),
+                curve: Curves.easeInOut)
             .then((value) => f());
+
+        // Scrollable.ensureVisible(key.currentContext!,
+        //         duration: const Duration(milliseconds: 600),
+        //         curve: Curves.easeOutQuad,
+        //         alignmentPolicy: ScrollPositionAlignmentPolicy.explicit)
+        //     .then((value) => controller.animateTo(controller.offset - 100,
+        //         duration: const Duration(milliseconds: 200),
+        //         curve: Curves.easeIn))
+        //     .then((value) => f());
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
@@ -118,7 +150,7 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    bool isMobile = screenWidth < 610;
+    bool isMobile = screenWidth < 710;
     if (!isMobile) {
       return DesktopNavbar(controller,
           aboutSectionKey: aboutSectionKey,
