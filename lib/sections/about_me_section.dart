@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/providers/section_heights_provider.dart';
 import 'package:my_portfolio/widgets/animation/animated_heading.dart';
+import 'package:my_portfolio/widgets/animation/scroll_animated_widget.dart';
 import 'package:my_portfolio/widgets/slant_design_painter.dart';
 import 'package:my_portfolio/widgets/heading.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +26,13 @@ class _AboutMeSectionState extends State<AboutMeSection> {
     super.didChangeDependencies();
   }
 
+  static const MAX_MOBILE_SCREEN_WIDTH = 780.0;
+  static const MAX_DESKTOP_SCREEN_WIDTH = 1400.0;
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth > 1400) screenWidth = 1400;
+    if (screenWidth > MAX_DESKTOP_SCREEN_WIDTH)
+      screenWidth = MAX_DESKTOP_SCREEN_WIDTH;
     return Stack(
       key: _sectionKey,
       alignment: AlignmentDirectional.topCenter,
@@ -36,8 +40,9 @@ class _AboutMeSectionState extends State<AboutMeSection> {
         Container(
           color: Colors.white,
           width: MediaQuery.of(context).size.width,
-          height:
-              screenWidth > 780 ? 300 : 520 + ((550 - screenWidth) * (10 / 23)),
+          height: screenWidth > MAX_MOBILE_SCREEN_WIDTH
+              ? 300
+              : 575 + ((550 - screenWidth) * (10 / 23)),
           child: CustomPaint(
             painter: SlantDesignPainter(context: context, section: "aboutMe"),
           ),
@@ -51,22 +56,27 @@ class _AboutMeSectionState extends State<AboutMeSection> {
         Positioned(
             bottom: 0,
             child: SizedBox(
-              // fit: screenWidth > 780 ? BoxFit.fitWidth : BoxFit.fitHeight,
+              // fit: screenWidth > MAX_MOBILE_SCREEN_WIDTH ? BoxFit.fitWidth : BoxFit.fitHeight,
               width: screenWidth,
-              height: screenWidth > 780
+              height: screenWidth > MAX_MOBILE_SCREEN_WIDTH
                   ? 265
                   : 520 + ((550 - screenWidth) * (10 / 23)),
               child: Flex(
-                direction: screenWidth > 780 ? Axis.horizontal : Axis.vertical,
+                direction: screenWidth > MAX_MOBILE_SCREEN_WIDTH
+                    ? Axis.horizontal
+                    : Axis.vertical,
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: screenWidth > 780
+                      padding: screenWidth > MAX_MOBILE_SCREEN_WIDTH
                           ? const EdgeInsets.all(48.0)
                           : const EdgeInsets.fromLTRB(48, 60, 48, 4),
-                      child: const Text(
-                        "I am a software Engineer with 2 years of working experience. Currently in love with Flutter and exploring new ways in which Mobile Development enables me to make real world impact, specially in the society around me. I love to design UI/UX before heading to code.",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      child: const ScrollAnimatedOpacityWidget(
+                        section: "About Me",
+                        child: Text(
+                          "I am a software Engineer with 2 years of working experience. Currently in love with Flutter and exploring new ways in which Mobile Development enables me to make real world impact, specially in the society around me. I love to design UI/UX before heading to code.",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
                       ),
                     ),
                   ),
@@ -74,7 +84,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                     './assets/portfolioPic.png',
                     scale: 3.8,
                   ),
-                  if (screenWidth > 780)
+                  if (screenWidth > MAX_MOBILE_SCREEN_WIDTH)
                     const SizedBox(
                       width: 50,
                     ),
