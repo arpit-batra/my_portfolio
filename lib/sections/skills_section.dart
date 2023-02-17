@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/providers/section_heights_provider.dart';
 import 'package:my_portfolio/widgets/animation/animated_heading.dart';
+import 'package:my_portfolio/widgets/animation/animated_skill.dart';
 import 'package:my_portfolio/widgets/heading.dart';
 import 'package:my_portfolio/widgets/skill.dart';
 import 'package:provider/provider.dart';
@@ -89,14 +90,18 @@ class _SkillsSectionState extends State<SkillsSection> {
             ),
           ),
           GridView.builder(
-            itemBuilder: ((context, index) => SkillWidget(
-                  assetName:
-                      SkillsSection.skillsList[index]["fileName"]!.toString(),
-                  skillName:
-                      SkillsSection.skillsList[index]["skillName"]!.toString(),
-                  imageScale: double.parse(SkillsSection.skillsList[index]
-                          ["imageScale"]!
-                      .toString()),
+            itemBuilder: ((context, index) => AnimatedSkill(
+                  skillIndex: index,
+                  totalSkills: 7,
+                  child: SkillWidget(
+                    assetName:
+                        SkillsSection.skillsList[index]["fileName"]!.toString(),
+                    skillName: SkillsSection.skillsList[index]["skillName"]!
+                        .toString(),
+                    imageScale: double.parse(SkillsSection.skillsList[index]
+                            ["imageScale"]!
+                        .toString()),
+                  ),
                 )),
             itemCount: 7,
             shrinkWrap: true,
