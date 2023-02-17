@@ -34,7 +34,8 @@ class _AnimatedHeadingState extends State<AnimatedHeading> {
   Widget build(BuildContext context) {
     final _scrollOffset =
         Provider.of<ScrollOffsetProvider>(context).scrollOffset;
-
+    final _maxScrollExtent =
+        Provider.of<ScrollOffsetProvider>(context).maxScrollExtent;
     final _deviceHeight = MediaQuery.of(context).size.height;
 
     double _sectionOffset = 0;
@@ -60,19 +61,18 @@ class _AnimatedHeadingState extends State<AnimatedHeading> {
     }
 
     //A
-    final _startingPoint = _sectionOffset - (_deviceHeight * 0.8);
+    final startingPoint = _sectionOffset - (_deviceHeight * 0.8);
     //B
-    final _endingPoint = _sectionOffset - (_deviceHeight * 0.5);
+    final endingPoint = _sectionOffset - (_deviceHeight * 0.5);
 
-    double _calculatedAnimatedBoxWidth = (_headingWidth + 40) *
-        ((_scrollOffset - _endingPoint) / (_startingPoint - _endingPoint));
-    if (_calculatedAnimatedBoxWidth < 0) {
-      _calculatedAnimatedBoxWidth = 0;
+    double calculatedAnimatedBoxWidth = (_headingWidth + 40) *
+        ((_scrollOffset - endingPoint) / (startingPoint - endingPoint));
+    if (calculatedAnimatedBoxWidth < 0 || _scrollOffset >= _maxScrollExtent) {
+      calculatedAnimatedBoxWidth = 0;
     }
-    if (_calculatedAnimatedBoxWidth > (_headingWidth + 40)) {
-      _calculatedAnimatedBoxWidth = (_headingWidth + 40);
+    if (calculatedAnimatedBoxWidth > (_headingWidth + 40)) {
+      calculatedAnimatedBoxWidth = (_headingWidth + 40);
     }
-    // print("${widget.text} -> $_headingWidth");
     return Stack(
       children: [
         Heading(key: _headingKey, text: widget.text, dark: widget.dark),
@@ -80,7 +80,7 @@ class _AnimatedHeadingState extends State<AnimatedHeading> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color: widget.dark ? Colors.black : Colors.white),
-          width: _calculatedAnimatedBoxWidth,
+          width: calculatedAnimatedBoxWidth,
           height: _headingHeight + 5,
           // child: Heading(text: widget.text, dark: widget.dark),
         ),

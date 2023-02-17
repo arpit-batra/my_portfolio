@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/providers/scroll_offset_provider.dart';
+import 'package:my_portfolio/providers/section_heights_provider.dart';
 import 'package:my_portfolio/sections/contact_section.dart';
 import 'package:my_portfolio/sections/intro.dart';
 import 'package:my_portfolio/sections/about_me_section.dart';
@@ -39,7 +40,14 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     // Provider.of<ScrollOffsetProvider>(context, listen: false)
     //     .setScrollController(controller);
+
     controller.addListener(onScroll);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<ScrollOffsetProvider>(context, listen: false)
+          .updateMaxScrollExtent(controller.position.maxScrollExtent);
+      // print("THIS -> ${controller.position.maxScrollExtent}");
+    });
+
     super.initState();
   }
 
