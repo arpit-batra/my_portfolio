@@ -8,6 +8,7 @@ import 'package:my_portfolio/sections/projects_section.dart';
 import 'package:my_portfolio/sections/skills_section.dart';
 import 'package:my_portfolio/sections/slant_box.dart';
 import 'package:my_portfolio/widgets/navbar/animated_navbar.dart';
+import 'package:my_portfolio/sections/social_media_section.dart';
 import 'package:my_portfolio/widgets/navbar/navbar.dart';
 import 'package:provider/provider.dart';
 
@@ -101,6 +102,7 @@ class _MainPageState extends State<MainPage> {
                     ContactSection(
                       key: contactSectionKey,
                     ),
+                    SocialMediaSection()
                   ],
                 ),
               ),
