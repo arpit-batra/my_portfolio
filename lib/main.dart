@@ -2,6 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/firebase_options.dart';
 import 'package:my_portfolio/main_page.dart';
+import 'package:my_portfolio/providers/scroll_offset_provider.dart';
+import 'package:my_portfolio/providers/section_heights_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +38,13 @@ class MyApp extends StatelessWidget {
           accentColor: Color.fromRGBO(129, 88, 248, 1),
           colorScheme:
               ColorScheme.light(secondary: Color.fromRGBO(129, 88, 248, 1))),
-      home: MainPage(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(value: ScrollOffsetProvider()),
+          ChangeNotifierProvider.value(value: SectionHeightsProvider()),
+        ],
+        child: MainPage(),
+      ),
     );
   }
 }
