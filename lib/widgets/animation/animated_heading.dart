@@ -83,7 +83,7 @@ class _AnimatedHeadingState extends State<AnimatedHeading> {
                 borderRadius: BorderRadius.circular(5),
                 color: widget.dark ? Colors.black : Colors.white),
             width: calculatedAnimatedBoxWidth,
-            height: _headingHeight + 30,
+            height: _headingHeight + 20,
             // child: Heading(text: widget.text, dark: widget.dark),
           ),
         ),
