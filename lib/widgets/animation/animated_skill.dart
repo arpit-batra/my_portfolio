@@ -30,7 +30,6 @@ class AnimatedSkill extends StatelessWidget {
         (0.5 * screenHeight) +
         (skillIndex * scrollOffsetForOneSkill);
 
-    final endOfAnimation = startOfAnimation + scrollOffsetForOneSkill;
     double yTranslation = 0;
 
     if (scrollOffset < startOfAnimation ||

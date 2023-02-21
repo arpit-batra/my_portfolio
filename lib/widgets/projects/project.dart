@@ -48,7 +48,7 @@ class Project extends StatelessWidget {
                       isMobile: true,
                     ),
                     ProjectImage(
-                      isIdEven: isIdEven,
+                      id: id,
                       assumedWidth: assumedWidth,
                       imageLocation: imageLocation,
                       isMobile: true,
@@ -57,7 +57,7 @@ class Project extends StatelessWidget {
                       height: 20,
                     ),
                     ProjectDescription(
-                      isIdEven: isIdEven,
+                      id: id,
                       assumedWidth: assumedWidth,
                       description: description,
                       isMobile: true,
@@ -68,11 +68,11 @@ class Project extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     ProjectImage(
-                        isIdEven: isIdEven,
+                        id: id,
                         assumedWidth: assumedWidth,
                         imageLocation: imageLocation),
                     ProjectDescription(
-                        isIdEven: isIdEven,
+                        id: id,
                         assumedWidth: assumedWidth,
                         description: description),
                     ProjectTitle(

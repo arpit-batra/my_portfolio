@@ -63,7 +63,7 @@ class _AnimatedHeadingState extends State<AnimatedHeading> {
     //A
     final startingPoint = _sectionOffset - (_deviceHeight * 0.8);
     //B
-    final endingPoint = _sectionOffset - (_deviceHeight * 0.5);
+    final endingPoint = _sectionOffset - (_deviceHeight * 0.7);
 
     double calculatedAnimatedBoxWidth = (_headingWidth + 40) *
         ((_scrollOffset - endingPoint) / (startingPoint - endingPoint));
@@ -76,13 +76,16 @@ class _AnimatedHeadingState extends State<AnimatedHeading> {
     return Stack(
       children: [
         Heading(key: _headingKey, text: widget.text, dark: widget.dark),
-        Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: widget.dark ? Colors.black : Colors.white),
-          width: calculatedAnimatedBoxWidth,
-          height: _headingHeight + 5,
-          // child: Heading(text: widget.text, dark: widget.dark),
+        Transform.translate(
+          offset: const Offset(0, -20),
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: widget.dark ? Colors.black : Colors.white),
+            width: calculatedAnimatedBoxWidth,
+            height: _headingHeight + 30,
+            // child: Heading(text: widget.text, dark: widget.dark),
+          ),
         ),
       ],
     );
