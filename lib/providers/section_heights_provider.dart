@@ -9,6 +9,7 @@ class SectionHeightsProvider with ChangeNotifier {
   double _projectHeadingHeight = 0;
   double _project0Height = 0;
   double _project1Height = 0;
+  double _project2Height = 0;
   static const double SLANT_BOX_HEIGHT = 20.0;
   static const double PROJECT_SIZED_BOX = 100.0;
   static const double PADDING_BTW_PROJECTS = 80;
@@ -70,6 +71,20 @@ class SectionHeightsProvider with ChangeNotifier {
     return tempP1SP;
   }
 
+  double get project2SectionPosition {
+    final tempP2SP = _introSectionHeight +
+        _aboutMeSectionHeight +
+        _skillsSectionHeight +
+        SLANT_BOX_HEIGHT +
+        PROJECT_HEADING_PADDING +
+        _projectHeadingHeight +
+        _project0Height +
+        PADDING_BTW_PROJECTS +
+        _project1Height +
+        PADDING_BTW_PROJECTS;
+    return tempP2SP;
+  }
+
   void setIntroSectionHeight(double introSectionHeight) {
     _introSectionHeight = introSectionHeight;
     notifyListeners();
@@ -102,6 +117,11 @@ class SectionHeightsProvider with ChangeNotifier {
 
   void setProject1Height(double project1Height) {
     _project1Height = project1Height;
+    notifyListeners();
+  }
+
+  void setProject2Height(double project2Height) {
+    _project2Height = project2Height;
     notifyListeners();
   }
 

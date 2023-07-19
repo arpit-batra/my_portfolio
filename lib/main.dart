@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
       title: 'Arpit Batra',
       theme: ThemeData(
           primarySwatch: const MaterialColor(0xFF1E0075, themeColor),
-          accentColor: Color.fromRGBO(129, 88, 248, 1),
+
+          // accentColor: ,
           colorScheme:
               ColorScheme.light(secondary: Color.fromRGBO(129, 88, 248, 1))),
       home: MultiProvider(

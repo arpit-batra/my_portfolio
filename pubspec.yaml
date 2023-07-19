@@ -91,6 +91,7 @@ flutter:
     - ./assets/projects/reenoScreen.png
     - ./assets/projects/Icons/github.svg
     - ./assets/projects/dotJoinSS.png
+    - ./assets/projects/KnuckleSS.png
     - ./assets/projects/Icons/googlePlay.svg
     - ./assets/SMIcons/twitter.svg
     - ./assets/SMIcons/github.svg

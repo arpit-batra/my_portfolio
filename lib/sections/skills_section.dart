@@ -90,6 +90,7 @@ class _SkillsSectionState extends State<SkillsSection> {
             ),
           ),
           GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: ((context, index) => AnimatedSkill(
                   skillIndex: index,
                   totalSkills: 7,
