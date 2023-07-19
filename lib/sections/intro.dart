@@ -49,10 +49,10 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     const introTextStyle = TextStyle(fontWeight: FontWeight.w900, fontSize: 64);
     //Color change for Contrast
-    var nameTextStyle = TextStyle(
+    var nameTextStyle = const TextStyle(
         fontWeight: FontWeight.w900,
         fontSize: 64,
-        color: Theme.of(context).accentColor);
+        color: Color.fromRGBO(129, 88, 248, 1));
     double deviceHeight = MediaQuery.of(context).size.height;
     double deviceWidth = MediaQuery.of(context).size.width;
     double prefferedWidth = 650;

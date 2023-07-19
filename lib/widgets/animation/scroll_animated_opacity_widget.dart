@@ -37,6 +37,10 @@ class ScrollAnimatedOpacityWidget extends StatelessWidget {
         sectionOffset = Provider.of<SectionHeightsProvider>(context)
             .project1SectionPosition;
         break;
+      case "Project2":
+        sectionOffset = Provider.of<SectionHeightsProvider>(context)
+            .project2SectionPosition;
+        break;
       case "Contact":
         sectionOffset = Provider.of<SectionHeightsProvider>(context)
             .contaceMeSectionPosition;

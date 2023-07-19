@@ -16,6 +16,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   final _sectionKey = GlobalKey();
   final _project0SectionKey = GlobalKey();
   final _project1SectionKey = GlobalKey();
+  final _project2SectionKey = GlobalKey();
   final _projectHeadingSectionKey = GlobalKey();
 
   @override
@@ -28,6 +29,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           .setProject0Height(_project0SectionKey.currentContext!.size!.height);
       Provider.of<SectionHeightsProvider>(context, listen: false)
           .setProject1Height(_project1SectionKey.currentContext!.size!.height);
+      Provider.of<SectionHeightsProvider>(context, listen: false)
+          .setProject2Height(_project2SectionKey.currentContext!.size!.height);
       Provider.of<SectionHeightsProvider>(context, listen: false)
           .setProjectHeadingHeight(
               _projectHeadingSectionKey.currentContext!.size!.height);
@@ -78,7 +81,23 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           height: 80,
         ),
         Project(
-          key: _project1SectionKey,
+            key: _project1SectionKey,
+            imageLocation: "./assets/projects/KnuckleSS.png",
+            projectName: "Knuckle - Habit Tracker",
+            gitHubLink: "https://github.com/arpit-batra/HABIT_TRACKER.git",
+            playStoreLink:
+                "https://play.google.com/store/apps/details?id=com.arpitbatra98.knuckle",
+            description: [
+              "An Android Application coded in flutter that helps you build and keep track of new habits",
+              "Uses BLoC for State Management and Shared Preferences (Hydrated BLoC) to store data locally",
+              "Containse animations and supports for Dark Mode for nice user experience"
+            ],
+            id: 1),
+        const SizedBox(
+          height: 80,
+        ),
+        Project(
+          key: _project2SectionKey,
           imageLocation: "./assets/projects/dotJoinSS.png",
           projectName: "DotJoin – Dots and Boxes",
           gitHubLink: "https://github.com/akuldr67/DotJoin",
@@ -89,7 +108,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             "It uses Firebase Realtime Database to create online rooms, which also support room chat.",
             "Added Banner and Interstitial Ads using Google AdMob APIs.",
           ],
-          id: 1,
+          id: 2,
         ),
         const SizedBox(
           height: 80,
