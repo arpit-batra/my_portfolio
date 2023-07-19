@@ -3,7 +3,6 @@ import 'package:my_portfolio/providers/section_heights_provider.dart';
 import 'package:my_portfolio/widgets/animation/animated_heading.dart';
 import 'package:my_portfolio/widgets/animation/scroll_animated_opacity_widget.dart';
 import 'package:my_portfolio/widgets/slant_design_painter.dart';
-import 'package:my_portfolio/widgets/heading.dart';
 import 'package:provider/provider.dart';
 
 class AboutMeSection extends StatefulWidget {

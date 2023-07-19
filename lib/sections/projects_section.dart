@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/providers/section_heights_provider.dart';
 import 'package:my_portfolio/widgets/animation/animated_heading.dart';
-import 'package:my_portfolio/widgets/heading.dart';
 import 'package:my_portfolio/widgets/projects/project.dart';
 import 'package:provider/provider.dart';
 
@@ -87,10 +86,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             gitHubLink: "https://github.com/arpit-batra/HABIT_TRACKER.git",
             playStoreLink:
                 "https://play.google.com/store/apps/details?id=com.arpitbatra98.knuckle",
-            description: [
-              "An Android Application coded in flutter that helps you build and keep track of new habits",
-              "Uses BLoC for State Management and Shared Preferences (Hydrated BLoC) to store data locally",
-              "Containse animations and supports for Dark Mode for nice user experience"
+            description: const [
+              "An Android Application coded in flutter that helps you build and keep track of new habits.",
+              "Uses BLoC for State Management and Shared Preferences (Hydrated BLoC) to store data locally.",
+              "Contains animations and supports for Dark Mode for nice user experience."
             ],
             id: 1),
         const SizedBox(

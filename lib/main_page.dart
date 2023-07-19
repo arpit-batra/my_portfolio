@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/providers/scroll_offset_provider.dart';
-import 'package:my_portfolio/providers/section_heights_provider.dart';
 import 'package:my_portfolio/sections/contact_section.dart';
 import 'package:my_portfolio/sections/intro.dart';
 import 'package:my_portfolio/sections/about_me_section.dart';
@@ -9,7 +8,6 @@ import 'package:my_portfolio/sections/skills_section.dart';
 import 'package:my_portfolio/sections/slant_box.dart';
 import 'package:my_portfolio/widgets/navbar/animated_navbar.dart';
 import 'package:my_portfolio/sections/social_media_section.dart';
-import 'package:my_portfolio/widgets/navbar/navbar.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
@@ -27,8 +25,6 @@ class _MainPageState extends State<MainPage> {
   final projectsSectionKey = GlobalKey();
 
   final contactSectionKey = GlobalKey();
-
-  bool _firstRun = true;
 
   final controller = ScrollController();
 
