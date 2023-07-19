@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/providers/section_heights_provider.dart';
 import 'package:my_portfolio/widgets/animation/animated_heading.dart';
 import 'package:my_portfolio/widgets/animation/animated_skill.dart';
-import 'package:my_portfolio/widgets/heading.dart';
 import 'package:my_portfolio/widgets/skill.dart';
 import 'package:provider/provider.dart';
 

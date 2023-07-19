@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
 import 'package:my_portfolio/widgets/navbar/navbar.dart';
 
 class AnimatedNavBar extends StatefulWidget {

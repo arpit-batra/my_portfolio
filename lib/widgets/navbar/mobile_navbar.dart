@@ -1,5 +1,4 @@
 // import 'dart:html';
-import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/widgets/navbar/navbar.dart';

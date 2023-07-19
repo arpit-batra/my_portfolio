@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/providers/section_heights_provider.dart';
@@ -7,7 +6,6 @@ import 'package:my_portfolio/widgets/navbar/desktop_navbar.dart';
 import 'package:my_portfolio/widgets/navbar/mobile_navbar.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class NavBar extends StatelessWidget {
   final ScrollController controller;
@@ -55,7 +53,6 @@ class NavBar extends StatelessWidget {
   static Widget resumeButton(BuildContext context) {
     return TextButton(
       onPressed: () async {
-        Dio dio = new Dio();
         String url = await FirebaseStorage.instance
             .ref()
             .child("Personal/RecentResume.pdf")
